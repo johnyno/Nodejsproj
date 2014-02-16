@@ -4,6 +4,6 @@
   "private": true,
   "dependencies": {
     "express": "~3.x.x",
-    "jade": "~x.x.x"
+    "jade": "~x.x.0"
   }
 }
