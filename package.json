@@ -8,7 +8,7 @@
     "url": "https://github.com/johnyno/Nodejsproj.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specifiedd\" && exit 1"
   },
   "dependencies": {
     "express": "~3.x.x",
