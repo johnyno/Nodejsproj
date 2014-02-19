@@ -1,4 +1,4 @@
-
+//server
 /*
  * GET home page.
  */

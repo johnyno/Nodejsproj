@@ -1,4 +1,4 @@
-// initialize our faux database
+// server
 var data = {
     "posts": [
         {

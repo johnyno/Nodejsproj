@@ -1,9 +1,25 @@
-
+doctype html
 html(ng-app="myApp")
   head
-    meta(charset='utf8')
-    base(href='/')
+       base(href='/')
     title Angular Express Seed App
     link(rel='stylesheet', href='/css/app.css')
+  include inc/header
   body
+  .navbar.navbar-default.navbar-static-top(role='navigation')
+     ul.nav.navbar-nav(ng-controller='NavCtrl')
+         li(ng-class='navClass("home")')
+             a(href='/home') Home
+         li(ng-class='navClass("about")')
+             a(href='/about') About Us
+         li(ng-class='navClass("contact")')
+             a(href='/contact') Contact Us
     block body
+  include inc/footer
+
+      script(src='js/lib/angular/angular.js')
+      script(src='js/app.js')
+      script(src='js/services.js')
+      script(src='js/controllers.js')
+      script(src='js/filters.js')
+      script(src='js/directives.js')

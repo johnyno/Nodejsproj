@@ -54,8 +54,6 @@ if (app.get('env') === 'production') {
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
-// redirect all others to the index (HTML5 history)
-
 
 // JSON API
 app.get('/api/posts', api.getPosts(db));

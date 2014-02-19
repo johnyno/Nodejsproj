@@ -1,5 +1,5 @@
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
+var app =angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
     config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         $routeProvider.
             when('/', {
@@ -22,8 +22,20 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
                 templateUrl: 'partials/deletePost',
                 controller: DeletePostCtrl
             }).
+            when('/about',
+            {
+                templateUrl: 'partials/about',
+                controller: AboutCtrl
+            }).
+            when('/contact',
+            {
+                templateUrl: 'partials/contact',
+                controller: ContactCtrl
+            }).
             otherwise({
                 redirectTo: '/'
             });
         $locationProvider.html5Mode(true);
     }]);
+
+
