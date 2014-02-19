@@ -55,24 +55,18 @@ function DeletePostCtrl($scope, $http, $location, $routeParams) {
             });
 }
 
-/*
-function NavCtrl($scope, $http, $location, $routeParams)
-{
-        $scope.navClass = function (page) {
-            var currentRoute = $location.path().substring(1) || 'home';
-            return page === currentRoute ? 'active' : '';
-        }
-}
 
 
 
-*/
 
 function NavCtrl($scope, $location)
 {
     $scope.navClass = function (page) {
-        var currentRoute = $location.path().substring(1) || 'home';
-        return page === currentRoute ? 'active' : '';
+
+        //var currentRoute = $location.path().substring(1) || 'home';
+
+        //console.log('NavCtrl navigates to:' +  currentRoute);
+        //return page === currentRoute ? 'active' : '';
     }
 }
 
