@@ -1,7 +1,16 @@
 /* Controllers */
 
 function IndexCtrl($scope, $http) {
-    $http.get('/api/posts').
+    $http.get('/blogAPI/posts').
+        success(function(data, status, headers, config) {
+            console.log(data.posts);
+            $scope.posts = data.posts;
+        });
+}
+
+
+function BlogCtrl($scope, $http) {
+    $http.get('/blogAPI/posts').
         success(function(data, status, headers, config) {
             console.log(data.posts);
             $scope.posts = data.posts;
@@ -11,7 +20,7 @@ function IndexCtrl($scope, $http) {
 function AddPostCtrl($scope, $http, $location) {
     $scope.form = {};
     $scope.submitPost = function () {
-        $http.post('/api/post', $scope.form).
+        $http.post('/blogAPI/post', $scope.form).
             success(function(data) {
                 console.log('AddPostCtrl - success');
                 $location.path('/');
@@ -30,14 +39,14 @@ function ReadPostCtrl($scope, $http, $routeParams) {
 
 function EditPostCtrl($scope, $http, $location, $routeParams) {
     $scope.form = {};
-    $http.get('/api/post/' + $routeParams.id).
+    $http.get('/blogAPI/post/' + $routeParams.id).
         success(function(data) {
             $scope.form = data.post;
         });
 
     $scope.editPost = function () {
         console.log('EditPostCtrl - success');
-        $http.put('/api/post/' + $routeParams.id, $scope.form).
+        $http.put('/blogAPI/post/' + $routeParams.id, $scope.form).
             success(function(data) {
                 $location.url('/');
                 console.log('EditPostCtrl - success');
@@ -47,12 +56,12 @@ function EditPostCtrl($scope, $http, $location, $routeParams) {
 
 function DeletePostCtrl($scope, $http, $location, $routeParams) {
 
-        console.log('DeletePostCtrl - success222');
-        $http.delete('/api/delete/' + $routeParams.id).
-            success(function(data) {
-                console.log('DeletePostCtrl - success');
-                $location.url('/');
-            });
+    console.log('DeletePostCtrl - success');
+    $http.delete('/blogAPI/delete/' + $routeParams.id).
+        success(function(data) {
+            console.log('DeletePostCtrl - success');
+            $location.url('/');
+        });
 }
 
 
@@ -62,7 +71,7 @@ function DeletePostCtrl($scope, $http, $location, $routeParams) {
 function NavCtrl($scope, $location)
 {
     $scope.navClass = function (page) {
-
+        //do thomething OnNavigation
         //var currentRoute = $location.path().substring(1) || 'home';
 
         //console.log('NavCtrl navigates to:' +  currentRoute);
@@ -74,5 +83,26 @@ function AboutCtrl($scope, $http, $location, $routeParams){
     console.log('inside about controller');
 }
 function ContactCtrl($scope, $http, $location, $routeParams){
-    console.log('inside contact controller');
+    var formData = {
+        firstname: "default",
+        emailaddress: "default",
+        contactcontent: "default",
+        gender: "default",
+        member: false,
+        file_profile: "default",
+        file_avatar: "default"
+    };
+
+    $scope.submitForm = function() {
+        console.log("posting data....");
+        formData = $scope.form;
+        console.log(formData);
+        //$http.post('form.php', JSON.stringify(data)).success(function(){/*success callback*/});
+
+        $http.post('/api/contact', $scope.form).
+            success(function(formData) {
+                console.log('ContactCtrl - success');
+                $location.path('/');
+            });
+    };
 }

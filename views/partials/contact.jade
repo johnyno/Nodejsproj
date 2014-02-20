@@ -1,33 +1,33 @@
 div(ng-app='myApp')
-    form(name='saveTemplateData', action='#', ng-controller='FormCtrl', ng-submit='submitForm()')
-        | First name&colon;
-        br
-        input(type='text', ng-model='form.firstname')
-        br
-        br
-        | Email Address&colon;
-        br
-        input(type='text', ng-model='form.emailaddress')
-        br
-        br
-        textarea(rows='3', cols='25', ng-model='form.textareacontent')
-        br
-        br
-        input(type='radio', ng-model='form.gender', value='female')
-        | Female &period;&period;&period;
-        input(type='radio', ng-model='form.gender', value='male')
-        | Male
-        br
-        br
-        br
-        input(type='checkbox', ng-model='form.member', value='5')
-        | Already a member
-        br
-        br
-            input#file_profile(type='file', ng-model='form.file_profile')
-        br
-        input#file_avatar(type='file', ng-model='form.file_avatar')
-        br
-        br
-        // <button ng-click="save()" >Save</button>
-        input(type='submit', ngclick='Submit')
+    | First name:
+    br
+    input(type='text', name='form.firstname')
+    br
+    br
+    | Email Address:
+    br
+    input(type='text', ng-model='form.emailaddress')
+    br
+    br
+    textarea(rows='3', cols='25',ng-model='form.contactcontent') Describe your reason for submitting this form ...
+    br
+    br
+    input(type='radio', ng-model='form.gender', value='female')
+    | Female ...
+    input(type='radio', ng-model='form.gender', value='male')
+    | Male
+    br
+    br
+    br
+    input(type='checkbox', ng-model='form.member', value='true')
+    | Already a member
+    input(type='checkbox', ng-model='form.member', value='false')
+    | Not a member
+    br
+    br
+    input#file_profile(type='file', ng-model='form.file_profile')
+    br
+    input#file_avatar(type='file', ng-model='form.file_avatar')
+    br
+    br
+    button(ng-click='submitForm()') Submit

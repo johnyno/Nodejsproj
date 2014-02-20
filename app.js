@@ -6,6 +6,7 @@
 var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
+  blogAPI = require('./routes/blogAPI'),
   http = require('http'),
   path = require('path');
 
@@ -56,14 +57,14 @@ app.get('/partials/:name', routes.partials);
 
 
 // JSON API
-app.get('/api/posts', api.getPosts(db));
-app.get('/api/post/:id', api.getPost(db));
-app.post('/api/post', api.addPost(db));
-app.put('/api/post/:id', api.editPost(db));
-app.delete('/api/delete/:id', api.deletePost(db));
+app.get('/blogAPI/posts', blogAPI.getPosts(db));
+app.get('/blogAPI/post/:id', blogAPI.getPost(db));
+app.post('/blogAPI/post', blogAPI.addPost(db));
+app.put('/blogAPI/post/:id', blogAPI.editPost(db));
+app.delete('/blogAPI/delete/:id', blogAPI.deletePost(db));
 
 
-
+app.post('/api/contact', api.addContact(db));
 
 /**
  * Start Server
