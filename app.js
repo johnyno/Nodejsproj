@@ -4,6 +4,7 @@
  */
 
 var express = require('express'),
+    nodemailer = require("nodemailer"),
   routes = require('./routes'),
   api = require('./routes/api'),
   blogAPI = require('./routes/blogAPI'),
@@ -34,6 +35,14 @@ app.use(app.router);
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodemain');
+var SMTPTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "johnyno@gmail.com",
+        pass: "karmajohny641830641830"
+    }
+});
+
 
 // development only
 if (app.get('env') === 'development') {
@@ -65,7 +74,7 @@ app.put('/blogAPI/post/:id', blogAPI.editPost(db));
 app.delete('/blogAPI/delete/:id', blogAPI.deletePost(db));
 
 
-app.post('/api/contact', api.addContact(db));
+app.post('/api/contact', api.addContact(db,SMTPTransport));
 
 /**
  * Start Server

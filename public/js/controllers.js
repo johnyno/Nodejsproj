@@ -95,7 +95,7 @@ function ContactCtrl($scope, $http, $location, $routeParams){
     $scope.submitForm = function() {
         console.log("posting data....");
         formData = $scope.form;
-        console.log(formData);
+        //console.log(formData);
         //$http.post('form.php', JSON.stringify(data)).success(function(){/*success callback*/});
 
         $http.post('/api/contact', $scope.form).
