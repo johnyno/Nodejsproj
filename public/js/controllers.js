@@ -1,10 +1,9 @@
 /* Controllers */
 
-function IndexCtrl($scope, $http) {
+function HomeCtrl($scope, $http) {
     $http.get('/blogAPI/posts').
         success(function(data, status, headers, config) {
-            console.log(data.posts);
-            $scope.posts = data.posts;
+           //
         });
 }
 
@@ -12,7 +11,7 @@ function IndexCtrl($scope, $http) {
 function BlogCtrl($scope, $http) {
     $http.get('/blogAPI/posts').
         success(function(data, status, headers, config) {
-            console.log(data.posts);
+            console.log('BlogCtrl - success');
             $scope.posts = data.posts;
         });
 }
@@ -23,14 +22,14 @@ function AddPostCtrl($scope, $http, $location) {
         $http.post('/blogAPI/post', $scope.form).
             success(function(data) {
                 console.log('AddPostCtrl - success');
-                $location.path('/');
+                $location.path('/blog');
             });
     };
 }
 
 function ReadPostCtrl($scope, $http, $routeParams) {
 
-    $http.get('/api/post/' + $routeParams.id).
+    $http.get('/blogAPI/post/' + $routeParams.id).
         success(function(data) {
             console.log('ReadPostCtrl - success');
             $scope.post = data.post;
@@ -48,7 +47,7 @@ function EditPostCtrl($scope, $http, $location, $routeParams) {
         console.log('EditPostCtrl - success');
         $http.put('/blogAPI/post/' + $routeParams.id, $scope.form).
             success(function(data) {
-                $location.url('/');
+                $location.url('/blog');
                 console.log('EditPostCtrl - success');
             });
     };
@@ -60,7 +59,7 @@ function DeletePostCtrl($scope, $http, $location, $routeParams) {
     $http.delete('/blogAPI/delete/' + $routeParams.id).
         success(function(data) {
             console.log('DeletePostCtrl - success');
-            $location.url('/');
+            $location.url('/blog');
         });
 }
 

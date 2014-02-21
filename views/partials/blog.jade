@@ -1,0 +1,17 @@
+div
+    h2 My Blog
+    ul
+        li
+            a(href='/') Home
+        li
+            a(href='/blog/addPost') Add a new post
+
+p There are {{posts.length}} posts
+div(ng-repeat='post in posts')
+    h3 {{post.title}}
+    div {{post.text}}
+    a(href='blog/readPost/{{post._id}}') More
+    | -
+    a(href='blog/editPost/{{post._id}}') Edit
+    | -
+    a(href='blog/deletePost/{{post._id}}') Delete

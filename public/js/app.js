@@ -4,22 +4,26 @@ var app =angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.dire
         $routeProvider.
             when('/', {
                 templateUrl: 'partials/index',
-                controller: IndexCtrl
+                controller: HomeCtrl
             }).
-            when('/addPost', {
-                templateUrl: 'partials/addPost',
+            when('/blog', {
+                templateUrl: 'partials/blog',
+                controller: BlogCtrl
+            }).
+            when('/blog/addPost', {
+                templateUrl: 'partials/blog/addPost',
                 controller: AddPostCtrl
             }).
-                when('/readPost/:id', {
-                templateUrl: 'partials/readPost',
+                when('/blog/readPost/:id', {
+                templateUrl: 'partials/blog/readPost',
                 controller: ReadPostCtrl
             }).
-            when('/editPost/:id', {
-                templateUrl: 'partials/editPost',
+            when('/blog/editPost/:id', {
+                templateUrl: 'partials/blog/editPost',
                 controller: EditPostCtrl
             }).
-            when('/deletePost/:id', {
-                templateUrl: 'partials/deletePost',
+            when('/blog/deletePost/:id', {
+                templateUrl: 'partials/blog/deletePost',
                 controller: DeletePostCtrl
             }).
             when('/about',

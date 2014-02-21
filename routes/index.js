@@ -12,4 +12,10 @@ exports.partials = function (req, res) {
   res.render('partials/' + name);
 };
 
+exports.blogPages = function (req, res) {
+    var name = req.params.name;
+    console.log(name);
+    res.render('partials/blog/' + name);
+};
+
 
